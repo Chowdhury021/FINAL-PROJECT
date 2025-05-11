@@ -1,32 +1,34 @@
-import React from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Sidebar from "./components/Sidebar/Sidebar";
+import React, { useState } from "react";
+import Navbar from "./components/navbar/navbar";
 import { Route, Routes } from "react-router-dom";
-import Add from "./pages/Add/Add";
-import List from "./pages/List/List";
-const url = 'YOUR_BACKEND_URL';
-import Orders from "./pages/Orders/Orders";
+import Home from "./pages/home/home";
+import Cart from "./pages/cart/cart";
+import PlaceOrder from "./pages/placeOrder/placeOrder";
+import Footer from "./components/Footer/Footer";
+import LoginPopup from "./components/LoginPopup/LoginPopup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Login from "./components/Login/Login";
+import Verify from "./pages/Verify/Verify";
+import MyOrders from "./pages/MyOrders/MyOrders";
 
 const App = () => {
-  const url = "https://food-delivery-backend-5b6g.onrender.com";
+  const [showLogin, setShowLogin] = useState(false);
   return (
-    <div>
-      <ToastContainer />
-      <Navbar />
-      <hr />
-      <div className="app-content">
-        <Sidebar />
+    <>
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+      <div className="app">
+        <ToastContainer />
+        <Navbar setShowLogin={setShowLogin} />
         <Routes>
-          <Route path="/" element={<Login url={url}/>} />
-          <Route path="/add" element={<Add url={url}/>} />
-          <Route path="/list" element={<List url={url}/>} />
-          <Route path="/orders" element={<Orders url={url}/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<PlaceOrder />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/myorders" element={<MyOrders />} />
         </Routes>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

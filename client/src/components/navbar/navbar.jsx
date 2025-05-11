@@ -7,15 +7,33 @@ import { toast } from "react-toastify";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  const logout=()=>{
+  const logout = () => {
     localStorage.removeItem("token");
     setToken("");
-    toast.success("Logout Successfully")
+    toast.success("Logout Successfully");
     navigate("/");
-  }
+  };
+
+  const handleSearch = () => {
+    if (searchTerm.trim() === "") {
+      toast.info("Please enter a search term.");
+      return;
+    }
+
+    // Navigate to menu section and possibly scroll to it
+    window.location.href = `#explore-menu`;
+
+    // You can also add logic to filter menu items via context or props
+    toast.info(`Searching for "${searchTerm}"...`);
+    setSearchTerm("");
+    setSearchOpen(false);
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -52,22 +70,51 @@ const Navbar = ({ setShowLogin }) => {
         </a>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        {/* Search Icon */}
+        <img
+          src={assets.search_icon}
+          alt="Search"
+          onClick={() => setSearchOpen(!searchOpen)}
+          style={{ cursor: "pointer" }}
+        />
+
+        {/* Conditional Search Input */}
+        {searchOpen && (
+          <div className="navbar-search-box">
+            <input
+              type="text"
+              placeholder="Search menu..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button onClick={handleSearch}>Go</button>
+          </div>
+        )}
+
+        {/* Cart */}
         <div className="navbar-search-icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
           </Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
+
+        {/* Auth Section */}
         {!token ? (
           <button onClick={() => setShowLogin(true)}>sign in</button>
         ) : (
           <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
             <ul className="nav-profile-dropdown">
-              <li onClick={()=>navigate("/myorders")}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+              <li onClick={() => navigate("/myorders")}>
+                <img src={assets.bag_icon} alt="" />
+                <p>Orders</p>
+              </li>
               <hr />
-              <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
             </ul>
           </div>
         )}
@@ -77,3 +124,4 @@ const Navbar = ({ setShowLogin }) => {
 };
 
 export default Navbar;
+

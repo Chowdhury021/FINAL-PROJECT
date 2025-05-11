@@ -1,33 +1,9 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
-import About from "./pages/About";
-import Delivery from "./pages/Delivery";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Home from "./pages/Home";
-import CategoryPage from "./pages/CategoryPage";
+import express from "express";
+import { loginUser, registerUser } from "../controllers/userController.js";
 
-function AppRoute() {
-  const routeList = [
-    { path: "/", element: <Home /> },
-    { path: "/about", element: <About /> },
-    { path: "/delivery", element: <Delivery /> },
-    { path: "/privacy-policy", element: <PrivacyPolicy /> },
-    { path: "/category/:categoryName", element: <CategoryPage /> },
-  ];
+const userRouter = express.Router();
 
-  return (
-    <Router>
-      <div>
-        <Routes>
-          {routeList.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
-          ))}
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
-  );
-}
+userRouter.post("/register", registerUser);
+userRouter.post("/login", loginUser);
 
-export default AppRoute;
+export default userRouter;

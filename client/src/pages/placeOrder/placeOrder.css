@@ -1,44 +1,77 @@
-.place-order{
+.place-order {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 50px;
-    margin-top: 100px;
+    gap: 40px;
+    margin-top: 80px;
+    flex-wrap: wrap;
 }
-.place-order-left{
+
+.place-order-left {
     width: 100%;
-    max-width: max(30%,500px);
+    max-width: 480px;
 }
-.place-order-left .title{
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 50px;
+
+.place-order-left .title {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    color: #333;
 }
-.place-order-left input{
-    margin-bottom: 15px;
+
+.place-order-left input {
+    margin-bottom: 12px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid #c5c5c5;
-    border-radius: 4px;
-    outline-color: tomato;
+    padding: 12px;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+    outline-color: #ff6347;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
 }
-.place-order-left .multi-fields{
+
+.place-order-left input:focus {
+    border-color: #ff6347;
+}
+
+.place-order-left .multi-fields {
     display: flex;
-    gap: 10px;
+    gap: 8px;
 }
-.place-order-right{
+
+.place-order-right {
     width: 100%;
-    max-width: max(40%,500px);
+    max-width: 480px;
 }
-.place-order .cart-total button{
-    margin-top: 30px;
+
+.place-order .cart-total button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-@media (max-width:800px) {
-    .place-order{
+
+.place-order .cart-total button:hover {
+    background-color: #e5533f;
+}
+
+@media (max-width: 800px) {
+    .place-order {
         flex-direction: column;
-        margin-top: 50px;
+        margin-top: 40px;
     }
-    .place-order-left .title{
-        font-size: 27px;
+
+    .place-order-left .title {
+        font-size: 24px;
+    }
+
+    .place-order .cart-total button {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 }

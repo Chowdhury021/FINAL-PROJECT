@@ -42,22 +42,37 @@ Axios used for API requests to backend
 Open a terminal in VS Code and go into the Client folder and then run
 	+npm install
 +npm run dev    
+
+
+
+
                              		2.How to install/setup the Admin
 			   
 Open a terminal in VS Code and go into the admin folder and then run																							
 +npm install
 +npm run dev	
 
+
+
+
 			                    3.How to install/setup the Back-End	
 		       
    Open a terminal in VS Code and go into the backend folder and then run																					+npm run dev	
 ￼
+
+
+
 AI tools/Technology we used:
+
 Chatgpt,Youtube 
+
+
+
 
 ￼Deployment LInk:
 ￼
- 
+
+ 
 ￼
  ##Authors:
 1. Sabrina Chowdhury(Chowdhury021)

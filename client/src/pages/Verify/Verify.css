@@ -1,18 +1,22 @@
-.verify{
-    min-height: 60vh;
+.verify {
+    min-height: 70vh;
     display: grid;
+    background-color: #f0f0f0;
 }
-.verify .spinner{
-    width: 100px;
-    height: 100px;
+
+.verify .spinner {
+    width: 80px;
+    height: 80px;
     place-self: center;
-    border: 5px solid #bdbdbd;
-    border-top-color: tomato;
+    border: 4px dashed #d6d6d6;
+    border-top-color: #ff6f61;
     border-radius: 50%;
-    animation: rotate 1s infinite;
+    animation: rotate 1.2s linear infinite;
+    background-color: transparent;
 }
+
 @keyframes rotate {
-    100%{
+    100% {
         transform: rotate(360deg);
     }
 }

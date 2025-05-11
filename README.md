@@ -77,7 +77,7 @@ Chatgpt,Youtube
  ##Authors:
 1. Sabrina Chowdhury(Chowdhury021)
 2. Name
-3. Name
+3. Jordan Carcamo (JC2411)
 4. Name
 5. Name
 ￼

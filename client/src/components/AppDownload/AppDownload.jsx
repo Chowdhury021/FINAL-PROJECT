@@ -5,7 +5,7 @@ import { assets } from '../../assets/frontend_assets/assets';
 const AppDownload = () => {
   return (
     <div className='app-download' id='app-download'>
-      <p>For Better Experience Download <br />Tomato App</p>
+      <p>Enhance Your Experience – Download Now <br />Tomato App</p>
       <div className="app-download-platforms">
         <a
           href="https://play.google.com/store"

@@ -11,7 +11,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Verify from "./pages/Verify/Verify";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy";
-import AboutUs from "./components/pages/AboutUs";
+import AboutUs from "./components/pages/About";
+import Delivery from "./components/pages/Delivery.jsx";
+
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -29,6 +31,7 @@ const App = () => {
           <Route path="/myorders" element={<MyOrders />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/delivery" element={<Delivery />} />
         </Routes>
       </div>
       <Footer />

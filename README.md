@@ -69,7 +69,7 @@ Chatgpt,Youtube
 
 
 
-￼Deployment LInk:
+￼Deployment LInk:https://final-project-2-git-f8ca32-sabrina-chowdhurys-projects-ff522d71.vercel.app
 ￼
 
  

@@ -43,7 +43,7 @@ Open a terminal in VS Code and go into the Client folder and then run
 	+npm install
 +npm run dev    
 
-
+Front-end (Client) runs on: Client: http://localhost:5173
 
 
                              		2.How to install/setup the Admin
@@ -52,14 +52,15 @@ Open a terminal in VS Code and go into the admin folder and then run
 +npm install
 +npm run dev	
 
-
+Admin runs on: http://localhost:5174
 
 
 			                    3.How to install/setup the Back-End	
 		       
-   Open a terminal in VS Code and go into the backend folder and then run																					+npm run dev	
+   Open a terminal in VS Code and go into the backend folder and then run	
+   	+npm run dev	
 ￼
-
+Backend runs on: http://localhost:4000
 
 
 AI tools/Technology we used:
@@ -79,6 +80,6 @@ Chatgpt,Youtube
 2. Christian Terrero (Chris_Dot1)
 3. Jordan Carcamo (JC2411)
 4. Edwin Drewry (d1de1ayy)
-5. Name
+5. Brian Perez (PapiP3)
 ￼
 

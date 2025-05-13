@@ -2,6 +2,7 @@
   "name": "admin",
   "version": "1.0.0",
   "main": "index.js",
+
   "dependencies": {
     "asynckit": "^0.4.0",
     "axios": "^1.9.0",
@@ -46,14 +47,17 @@
     "tinyglobby": "^0.2.13",
     "vite": "^6.3.5"
   },
+
   "devDependencies": {
     "@vitejs/plugin-react": "^4.4.1"
   },
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",

@@ -71,9 +71,13 @@ const Login = ({ url }) => {
             <a href="/forgot-password">Forgot your password?</a>
           </p>
 
-          //
-          
-          </div>
+          {/* Create account link */}
+          <p className="login-popup-link">
+            Don’t have an account?{" "}
+            <a href="/register">Create one</a>
+          </p>
+        </div>
+        
         <button type="submit">Login</button>
       </form>
     </div>

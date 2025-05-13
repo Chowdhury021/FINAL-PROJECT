@@ -1,0 +1,5 @@
+# ignore all top-level node_modules
+/node_modules/
+
+# ignore your backend folder’s node_modules
+/backend/node_modules/

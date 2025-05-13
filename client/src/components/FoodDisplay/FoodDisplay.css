@@ -12,3 +12,10 @@
     gap: 30px;
     row-gap: 50px;
 }
+.no-items {
+  text-align: center;
+  margin: 2rem 0;
+  color: #666;
+  font-size: 1.1rem;
+}
+

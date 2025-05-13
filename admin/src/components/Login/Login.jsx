@@ -1,52 +1,52 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Login.css";
-import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { StoreContext } from "../../context/StoreContext";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ url }) => {
-  const navigate=useNavigate();
-  const {admin,setAdmin,token, setToken } = useContext(StoreContext);
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-  const onChangeHandler = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setData((data) => ({ ...data, [name]: value }));
+  const navigate = useNavigate();
+  const { admin, setAdmin, token, setToken } = useContext(StoreContext);
+  const [data, setData] = useState({ email: "", password: "" });
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setData((d) => ({ ...d, [name]: value }));
   };
-  const onLogin = async (event) => {
-    event.preventDefault();
+
+  const onLogin = async (e) => {
+    e.preventDefault();
     const response = await axios.post(url + "/api/user/login", data);
-    if (response.data.success) {
-      if (response.data.role === "admin") {
-        setToken(response.data.token);
-        setAdmin(true);
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("admin", true);
-        toast.success("Login Successfully");
-        navigate("/add")
-      }else{
-        toast.error("You are not an admin");
-      }
+    if (response.data.success && response.data.role === "admin") {
+      setToken(response.data.token);
+      setAdmin(true);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("admin", true);
+      toast.success("Login Successfully");
+      navigate("/add");
     } else {
-      toast.error(response.data.message);
+      toast.error(
+        response.data.success
+          ? "You are not an admin"
+          : response.data.message
+      );
     }
   };
-  useEffect(()=>{
-    if(admin && token){
-       navigate("/add");
+
+  useEffect(() => {
+    if (admin && token) {
+      navigate("/add");
     }
-  },[])
+  }, [admin, token, navigate]);
+
   return (
     <div className="login-popup">
       <form onSubmit={onLogin} className="login-popup-container">
         <div className="login-popup-title">
           <h2>Login</h2>
         </div>
+
         <div className="login-popup-inputs">
           <input
             name="email"
@@ -56,6 +56,7 @@ const Login = ({ url }) => {
             placeholder="Your email"
             required
           />
+
           <input
             name="password"
             onChange={onChangeHandler}
@@ -64,7 +65,15 @@ const Login = ({ url }) => {
             placeholder="Your password"
             required
           />
-        </div>
+
+          {/* Forgot password link */}
+          <p className="login-popup-link">
+            <a href="/forgot-password">Forgot your password?</a>
+          </p>
+
+          //
+          
+          </div>
         <button type="submit">Login</button>
       </form>
     </div>

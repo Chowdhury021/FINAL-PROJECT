@@ -1,27 +1,29 @@
-import React from 'react'
-import './Sidebar.css'
-import { assets } from '../../assets/assets'
-import { NavLink } from 'react-router-dom'
+import React from "react";
+import "./Sidebar.css";
+// Adjust the path to assets and import the named `icons` export:
+import { icons as assets } from "../../assets/assets";
 
 const Sidebar = () => {
   return (
-    <div className='sidebar'>
-      <div className="sidebar-options">
-        <NavLink to='add' className="sidebar-option">
-          <img src={assets.add_icon} alt="" />
-          <p>Add Items</p>
-        </NavLink>
-        <NavLink to='list' className="sidebar-option">
-          <img src={assets.order_icon} alt="" />
-          <p>List Items</p>
-        </NavLink>
-        <NavLink to='orders' className="sidebar-option">
-          <img src={assets.order_icon} alt="" />
-          <p>Orders</p>
-        </NavLink>
-      </div>
+    <div className="sidebar">
+      {/* Example menu items using icons */}
+      <ul>
+        <li>
+          <img src={assets.basket_icon} alt="Orders" />
+          <span>Orders</span>
+        </li>
+        <li>
+          <img src={assets.parcel_icon} alt="Deliveries" />
+          <span>Deliveries</span>
+        </li>
+        <li>
+          <img src={assets.cross_icon} alt="Cancel" />
+          <span>Cancel</span>
+        </li>
+        {/* Add more items as needed */}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

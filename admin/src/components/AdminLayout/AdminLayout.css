@@ -1,0 +1,25 @@
+/* pushes under the fixed navbar */
+.admin-layout {
+  display: flex;
+  padding-top: 60px; /* must match your .navbar height */
+  height: 100vh;
+}
+
+/* sidebar on left */
+.sidebar {
+  width: 200px;
+  background: #fafafa;
+  border-right: 1px solid #e0e0e0;
+  position: sticky;
+  top: 60px;
+  padding: 24px 0;
+  height: calc(100vh - 60px);
+}
+
+/* main content area */
+.admin-content {
+  flex: 1;
+  background: #fff;
+  padding: 24px;
+  overflow-y: auto;
+}

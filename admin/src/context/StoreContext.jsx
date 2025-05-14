@@ -1,35 +1,17 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
-export const StoreContext = createContext(null);
+export const StoreContext = createContext();
 
-const StoreContextProvider = (props) => {
-  const [token, setToken] = useState("");
-  const [admin, setAdmin] = useState(false);
+export function StoreContextProvider({ children }) {
+  const [token, setToken]     = useState(localStorage.getItem("token") || "");
+  const [admin, setAdmin]     = useState(!!localStorage.getItem("admin"));
 
-
-  useEffect(() => {
-    async function loadData() {
-      if (localStorage.getItem("token")) {
-        setToken(localStorage.getItem("token"));
-      }
-      if (localStorage.getItem("admin")) {
-        setAdmin(localStorage.getItem("admin"));
-      }
-    }
-    loadData();
-  }, []);
-
-  const contextValue = {
-    token,
-    setToken,
-    admin,
-    setAdmin,
-  };
   return (
-    <StoreContext.Provider value={contextValue}>
-      {props.children}
+    <StoreContext.Provider value={{ token, admin, setToken, setAdmin }}>
+      {children}
     </StoreContext.Provider>
   );
-};
+}
+
+// this default export lets your main.jsx import it directly
 export default StoreContextProvider;

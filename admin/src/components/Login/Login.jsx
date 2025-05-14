@@ -1,87 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import "./Login.css";
-import { toast } from "react-toastify";
-import axios from "axios";
-import { StoreContext } from "../../context/StoreContext";
-import { useNavigate } from "react-router-dom";
 
-const Login = ({ url }) => {
-  const navigate = useNavigate();
-  const { admin, setAdmin, token, setToken } = useContext(StoreContext);
-  const [data, setData] = useState({ email: "", password: "" });
-
-  const onChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setData((d) => ({ ...d, [name]: value }));
-  };
-
-  const onLogin = async (e) => {
-    e.preventDefault();
-    const response = await axios.post(url + "/api/user/login", data);
-    if (response.data.success && response.data.role === "admin") {
-      setToken(response.data.token);
-      setAdmin(true);
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("admin", true);
-      toast.success("Login Successfully");
-      navigate("/add");
-    } else {
-      toast.error(
-        response.data.success
-          ? "You are not an admin"
-          : response.data.message
-      );
-    }
-  };
-
-  useEffect(() => {
-    if (admin && token) {
-      navigate("/add");
-    }
-  }, [admin, token, navigate]);
-
+export default function Login() {
   return (
-    <div className="login-popup">
-      <form onSubmit={onLogin} className="login-popup-container">
-        <div className="login-popup-title">
-          <h2>Login</h2>
+    <div className="login-box">
+      <h2>Login</h2>
+      <form>
+        <label>
+          <input type="email" placeholder="Your email" />
+        </label>
+        <label>
+          <input type="password" placeholder="Your password" />
+        </label>
+        <div className="login-links">
+          <a href="#">Forgot your password?</a>
+          <span>·</span>
+          <a href="#">Don’t have an account? Create one</a>
         </div>
-
-        <div className="login-popup-inputs">
-          <input
-            name="email"
-            onChange={onChangeHandler}
-            value={data.email}
-            type="email"
-            placeholder="Your email"
-            required
-          />
-
-          <input
-            name="password"
-            onChange={onChangeHandler}
-            value={data.password}
-            type="password"
-            placeholder="Your password"
-            required
-          />
-
-          {/* Forgot password link */}
-          <p className="login-popup-link">
-            <a href="/forgot-password">Forgot your password?</a>
-          </p>
-
-          {/* Create account link */}
-          <p className="login-popup-link">
-            Don’t have an account?{" "}
-            <a href="/register">Create one</a>
-          </p>
-        </div>
-        
-        <button type="submit">Login</button>
+        <button type="submit" className="login-btn">Login</button>
       </form>
     </div>
   );
-};
-
-export default Login;
+}

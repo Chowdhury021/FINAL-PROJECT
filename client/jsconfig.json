@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "checkJs": false  // turn off type-checking of .js/.jsx
+  },
+  "exclude": ["node_modules", "backend"]
+}

@@ -1,33 +1,24 @@
 import React from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Sidebar from "./components/Sidebar/Sidebar";
-import { Route, Routes } from "react-router-dom";
-import Add from "./pages/Add/Add";
-import List from "./pages/List/List";
-const url = 'YOUR_BACKEND_URL';
-import Orders from "./pages/Orders/Orders";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Login from "./components/Login/Login";
+import { Routes, Route, Navigate } from "react-router-dom";
+import AdminLayout from "./components/AdminLayout/AdminLayout.jsx";
+import Login from "./components/Login/Login.jsx";
+import Add   from "./pages/Add/Add.jsx";
+// import other pages as needed…
 
-const App = () => {
-  const url = "https://food-delivery-backend-5b6g.onrender.com";
+export default function App() {
   return (
-    <div>
-      <ToastContainer />
-      <Navbar />
-      <hr />
-      <div className="app-content">
-        <Sidebar />
-        <Routes>
-          <Route path="/" element={<Login url={url}/>} />
-          <Route path="/add" element={<Add url={url}/>} />
-          <Route path="/list" element={<List url={url}/>} />
-          <Route path="/orders" element={<Orders url={url}/>} />
-        </Routes>
-      </div>
-    </div>
-  );
-};
+    <Routes>
+      {/* public route */}
+      <Route path="/login" element={<Login />} />
 
-export default App;
+      {/* everything else goes into the admin layout */}
+      <Route path="/" element={<AdminLayout />}>
+        <Route index        element={<Add />} />
+        <Route path="add"   element={<Add />} />
+        {/* <Route path="list"  element={<List/>} /> */}
+        {/* <Route path="orders"element={<Orders/>} /> */}
+        <Route path="*"      element={<Navigate replace to="/" />} />
+      </Route>
+    </Routes>
+  );
+}

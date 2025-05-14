@@ -1,32 +1,37 @@
 import React, { useContext } from "react";
-import "./Navbar.css";
-import { assets } from "../../assets/assets";
-import { StoreContext } from "../../context/StoreContext";
-import { toast } from "react-toastify";
-import {useNavigate } from "react-router-dom";
+import { useNavigate }     from "react-router-dom";
+import { StoreContext }    from "../../context/StoreContext.jsx";
+import { icons as assets } from "../../assets/assets.js";
+import { toast }           from "react-toastify";
 
-const Navbar = () => {
-  const navigate=useNavigate();
-  const {token, admin, setAdmin, setToken } = useContext(StoreContext);
-  const logout=()=>{
+export default function Navbar() {
+  const navigate = useNavigate();
+  const ctx      = useContext(StoreContext) || {};
+  const { token, admin, setToken, setAdmin } = ctx;
+
+  const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("admin");
     setToken("");
     setAdmin(false);
-    toast.success("Logout Successfully")
-    navigate("/");
-  }
-  return (
-    <div className="navbar">
-      <img className="logo" src={assets.logo} alt="" />
-      {token && admin ? (
-        <p className="login-conditon" onClick={logout}>Logout</p>
-      ) : (
-        <p className="login-conditon" onClick={()=>navigate("/")}>Login</p>
-      )}
-      <img className="profile" src={assets.profile_image} alt="" />
-    </div>
-  );
-};
+    toast.success("Logged out");
+    navigate("/login");
+  };
 
-export default Navbar;
+  return (
+    <header className="navbar">
+      <img className="logo"   src={assets.logo} alt="logo" />
+      <h1 className="title">Tomato. Admin Panel</h1>
+
+      {/* right-side controls */}
+      <div className="nav-actions">
+        {token && admin 
+          ? <button onClick={logout}>Logout</button>
+          : <button onClick={() => navigate("/login")}>Login</button>}
+        {assets.profile_icon && (
+          <img className="profile" src={assets.profile_icon} alt="Profile" />
+        )}
+      </div>
+    </header>
+  );
+}

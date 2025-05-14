@@ -1,59 +1,99 @@
+
+/* 1) Existing reset & utilities */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background-color: #f7f7f7;
-    line-height: 1.6;
-    color: #333;
+  min-height: 100vh;
+  background-color: #f7f7f7;
+  line-height: 1.6;
+  color: #333;
 }
 
 a {
-    text-decoration: underline dotted;
-    color: #007acc;
-    transition: color 0.2s ease-in-out;
+  text-decoration: underline dotted;
+  color: #007acc;
+  transition: color 0.2s ease-in-out;
 }
-
-a:hover {
-    color: #005f99;
-}
+a:hover { color: #005f99; }
 
 hr {
-    border: none;
-    height: 2px;
-    background-color: #e0e0e0;
-    margin: 16px 0;
+  border: none;
+  height: 2px;
+  background-color: #e0e0e0;
+  margin: 16px 0;
 }
 
-.app-content {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 16px;
-    gap: 16px;
+.app-content { display: flex; flex-wrap: wrap; padding: 16px; gap: 16px; }
+.flex-col   { display: flex; flex-direction: column; gap:16px; padding:8px; background:#fff; border-radius:8px; box-shadow:0 2px 4px rgba(0,0,0,0.05); }
+.cursor     { cursor:pointer; user-select:none; transition:transform 0.1s ease; }
+.cursor:active { transform: scale(0.97); }
+
+/* 2) For the admin layout */
+
+/* fixed top navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 1000;
 }
 
-.flex-col {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 8px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+/* push the content below the navbar */
+.admin-layout {
+  display: flex;
+  padding-top: 60px; /* navbar height */
+  height: 100%;
 }
 
-.cursor {
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.1s ease-in-out;
+/* left sidebar */
+.sidebar {
+  width: 200px;
+  background: #fafafa;
+  border-right: 1px solid #e0e0e0;
+  position: sticky;
+  top: 60px;             /* below navbar */
+  height: calc(100vh - 60px);
+  padding: 24px 0;
+}
+.sidebar ul { list-style: none; }
+.sidebar li {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+  padding: 0 16px;
+}
+.sidebar li img {
+  width: 24px;
+  margin-right: 12px;
+}
+.sidebar li span {
+  font-size: 14px;
 }
 
-.cursor:active {
-    transform: scale(0.97);
+/* main content area */
+.admin-content {
+  flex: 1;
+  background: #fff;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+/* page titles */
+.page-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  color: #222;
 }

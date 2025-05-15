@@ -5,6 +5,8 @@ const Header = () => {
     const menuSection = document.getElementById("menu");
     if (menuSection) {
       menuSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.log("Menu section not found!");
     }
   };
 
@@ -18,7 +20,7 @@ const Header = () => {
           mission is to satisfy your cravings and elevate your dining
           experience, one delicious meal at a time.
         </p>
-        <button onClick={scrollToMenu}>View Menu</button> 
+        <button onClick={scrollToMenu}>View Menu</button>
       </div>
     </div>
   );

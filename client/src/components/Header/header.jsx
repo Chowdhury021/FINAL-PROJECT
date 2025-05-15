@@ -1,15 +1,24 @@
-import React from "react";
 import "./Header.css";
 
 const Header = () => {
+  const scrollToMenu = () => {
+    const menuSection = document.getElementById("menu");
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="header">
       <div className="header-contents">
-        <h2>Delicious Food Just a Click Away</h2>
+        <h2>Order your favourite food here</h2>
         <p>
-        Browse a variety of crave-worthy meals made with top-quality ingredients and delivered straight to your door. We make it easy to enjoy restaurant-quality food anytime, anywhere.
+          Choose from a diverse menu featuring a delectable array of dishes
+          crafted with the finest ingredients and culinary expertise. Our
+          mission is to satisfy your cravings and elevate your dining
+          experience, one delicious meal at a time.
         </p>
-        <button>View Menu</button>
+        <button onClick={scrollToMenu}>View Menu</button> 
       </div>
     </div>
   );

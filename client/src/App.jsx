@@ -1,3 +1,4 @@
+// >>> GIT STAGING CHECKPOINT <<<
 import React, { useState } from "react";
 //import Navbar from "./components/Navbar/Navbar";
 import Navbar from "./components/navbar/navbar.jsx";

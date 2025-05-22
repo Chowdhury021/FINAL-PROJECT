@@ -1,5 +1,5 @@
 {
-  "projects": [
+  "builds": [
     {
       "src": "client/package.json",
       "use": "@vercel/static-build",
@@ -15,6 +15,16 @@
         "distDir": "dist",
         "buildCommand": "npm run build"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/admin/(.*)",
+      "dest": "/admin/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/$1"
     }
   ]
 }

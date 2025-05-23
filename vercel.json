@@ -1,15 +1,8 @@
 {
+  "rootDirectory": "client",
   "builds": [
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist",
-        "buildCommand": "npm run build"
-      }
-    },
-    {
-      "src": "admin/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist",
@@ -20,11 +13,11 @@
   "routes": [
     {
       "src": "/admin/(.*)",
-      "dest": "/admin/$1"
+      "dest": "/../admin/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/$1"
+      "dest": "/$1"
     }
   ]
 }

@@ -1,4 +1,7 @@
-import "./Header.css";
+//import "./Header.css";
+import "./header.css";
+//import Header from "../../components/header/header";
+//import Header from "../../components/Header/Header";
 
 const Header = () => {
   const scrollToMenu = () => {
@@ -27,3 +30,4 @@ const Header = () => {
 };
 
 export default Header;
+//export default header;

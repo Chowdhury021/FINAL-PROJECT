@@ -1,5 +1,4 @@
 {
-  "rootDirectory": "client",
   "builds": [
     {
       "src": "package.json",
@@ -11,9 +10,7 @@
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+    { "src": "/admin/(.*)", "dest": "../admin/$1" },
+    { "src": "/(.*)",       "dest": "/$1"        }
   ]
 }
